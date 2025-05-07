@@ -11,7 +11,8 @@ require_once 'User-Header.php';
 
     <div class="card-body">
         <h2>Successfully Uploaded!</h2><br>
-        <p class="align-items-center text-center">You have succesfully uploaded the form! Please wait until it get approved from Administrators. It may take few hours to get approved.</p>
+        <p class="align-items-center text-center">You have succesfully uploaded the image of the meter for the month <?php echo date('F');?>! 
+        Your durable bill is making and it may take few hours. You will recieve an email once the durable bill is prepared. Stay touch with your account.</p>
         <div class="align-items-center text-center">
         <a href="User-Dashboard.php"><button class="btn btn-danger">OK</button></a>
         </div>

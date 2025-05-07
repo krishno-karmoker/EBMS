@@ -3,7 +3,7 @@ require_once '../../Config.php';
 
 $new_password_err = $confirm_password_err = $new_password  = $confirm_password = "";
 
-$admin_id = $_SESSION['admin_id'];
+$user_id = $_SESSION['user_id'];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
  
@@ -31,10 +31,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Check input errors before updating the database
     if(empty($new_password_err) && empty($confirm_password_err)){
         // Prepare an update statement
-        $sql = "UPDATE admin SET admin_password = '$new_password' WHERE admin_id = '$admin_id'";
+        $sql = "UPDATE users SET user_password = '$new_password' WHERE user_id = '$user_id'";
         
         if(mysqli_query($link,$sql)){
-            header("Location:../../Current-Admin-Login.php");
+            $message = "Recovery password method is used to change the password when login.";
+            $activity = "INSERT INTO activity_log (user_id, message) VALUES ('$user_id', '$message')";
+            mysqli_query($link,$activity);
+            header("Location:../../User-Login.php");
             
         }
 
